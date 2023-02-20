@@ -1,0 +1,460 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <title>Document</title>
+	<!-- <link rel="stylesheet" href="/dist/css/switch.scss"> -->
+	<link rel="stylesheet" href="css/page-anim.css" /> 
+	<link rel="stylesheet" href="css/imagetrans.css" /> 
+
+    <style>
+        body {
+            overflow: hidden;
+			background-color: #7AB9E0;
+
+			/* animation: fadeBackground 6s;
+  			animation-fill-mode: forwards; */
+        }
+		/* @keyframes fadeBackground {
+			from { background-color: #FCE97F; }
+			to { background-color: #2EB07B; }
+		} */
+		/* width: 200px; height: 10px; */
+        .n { position: absolute; top: 150px;  background: #000; border : 2px solid yellow}
+        .n1 {top: 300px;}
+        .n2 {top: 450px;}
+        .n3 {top: 600px;}
+        .n4 {top: 750px;}
+		.n5 {top: 900px;}
+		.n6 {top: 1050px;}
+        #block {
+            height: 100px;
+            width: 100px;
+            position: absolute;
+			background: fuchsia;
+			z-index: 100
+		}
+		#container {
+			width: 100vw;
+			height: 100vh;
+			position: fixed;
+			top: 0;
+			left: 0;
+			z-index: 100;
+			/* -1 */
+			pointer-events: auto;
+			/* none */
+			/* padding-left: 300px; */
+			margin-left: 300px;
+
+			/* margin: 0px auto; */
+		}
+		#wrap {
+			/* z-index: 100; */
+			display: none;
+			margin-left : 100px;
+
+		}
+		ul {
+			position: fixed;
+			top: 250;
+			right: 50;
+			z-index: 210;
+			/* border: 0px solid #000; */
+			/* width: 20px; */
+			/* height : 320px; */
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			text-align: right;
+			float: right;
+			box-sizing: border-box;
+
+		}
+		/* ul span {
+			display: none;
+		} */
+		ul:hover {
+			width: 250px;
+			color: white;
+		}
+		/* ul:hover span {
+			display: inline-block;
+		} */
+		ul:hover li {
+			/* width: 150px; */
+			/* background-color: gray; */
+			color : white;
+		}
+		li {
+			display: flex;
+			box-sizing: border-box;
+			justify-content: flex-end;
+
+			/* background : paleturquoise; */
+			margin : 20px 0px 20px 0px;
+			padding : 0px;
+			font-size: 20px;
+			line-height: 30px;
+			align-items: center;
+			text-align: right;
+			overflow: hidden;
+			color : transparent;
+		
+		}
+		
+		ul:hover li:hover {
+			color : rgb(128, 156, 27);
+		}
+		.right_span {
+			display: inline-block;
+			width : 10px;
+			height: 30px;
+			border-radius: 5px;
+			background: #d1d1d1;
+			margin : 0px 10px;
+		}
+
+		.container-detail {
+			width: 100%;
+			min-height: 100vh;
+			/* background: #333; */
+			background-color: #FFF194;
+		}
+		div.menu-top-main {
+          margin : 0px 0px;
+          display: flex;
+          justify-content: space-between;
+		  z-index: 350;
+        }
+        .menu-top-main a {
+          text-decoration: none;
+          font-family: Arial, Helvetica, sans-serif;
+		  font-size: 14px;
+          color : white;
+          /* font-weight: 600; */
+		  /* margin-left: 45px; */
+        }
+		.main-part {
+			padding : 0px 60px;
+			color : white;
+		}
+		.main-part h1{
+			color: white;
+			font-family: 'Times New Roman, Times, serif';
+			font-size: 130px;
+			font-weight: 600;
+			margin-top : 50px;
+			letter-spacing: -10px;
+			line-height: 150px;
+		}
+		.main-part p{
+			padding: 15px;
+			width: 600px;
+			font-size: 20px;
+		}
+		.main-part a{
+			padding: 30px 15px;
+			text-decoration: none;
+			color: white;
+			font-size: 14px;
+			font-weight: 600;
+		}
+		.main-part a.button {
+			padding: 30px 15px;
+			text-decoration: none;
+			color: white;
+			font-size: 20px;
+			font-weight: 600;
+		}
+		.video-link {
+			/* display: none; */
+			width: 210px;
+			height: 180px;
+			border : 5px solid white;
+			border-radius: 5px;
+			margin : 100px 0px;
+			padding: 0px;
+			cursor: pointer;
+		}
+		.loader_first {
+			/* display: block; */
+			position: fixed;
+			/* background : #0F1632; */
+			/* width : 100vw; */
+			/* height: 100vh; */
+
+			/* transform: scaleX(0);
+			transform-origin: center right; */
+		}
+
+		#detail-scene {
+			display: none;
+			position: fixed;
+			/* background: lighten(#0F1632, 10%); */
+			background: #e1e1e1;/*#FFF194;*/
+			width: 100vw;
+			height: 100vh;
+			left : 0;
+			/* right : 100%; */
+			top : 0;
+			z-index: 300;
+			/* opacity: 0; */
+		}
+		div.menu-top {
+          margin : 30px 30px;
+          display: flex;
+          justify-content: space-between;
+		  z-index: 330;
+        }
+        .menu-top a {
+          text-decoration: none;
+          font-family: Arial, Helvetica, sans-serif;
+		  font-size: 14px;
+          color : black;
+          font-weight: 600;
+		  margin-left: 45px;
+        }
+        a.down {
+          display: block;
+          width: 50px;
+          height: 50px;
+          border-radius: 50px;
+          background-color: #1d1d1d;
+          color : yellow;
+          text-align: center;
+          line-height: 50px;
+          text-decoration: none;
+          margin : 65% auto;
+        }
+        div.name-text {
+		  position: fixed;
+          margin: 30px;
+          font-family: 'Times New Roman', Times, serif;
+          font-size: 130px;
+          padding : 150px 50px;
+		  z-index: 30;
+        }
+		#flash-container {
+			position: absolute;
+			/* left: -100%; */
+		}
+		#flash-image {
+			display: none;
+			position: fixed;/*fixed*/
+			/* background: lighten(#0F1632, 10%); */
+			background: #00ffff;
+			width: 100vw;
+			height: 100vh;
+			left : 0;
+			/* right : 0; */
+			top : 0;
+			z-index: 201;
+			/* opacity: 0; */
+		}
+		#flash-detail {
+			display: none;
+			position: fixed;/*fixed*/
+			/* background: lighten(#0F1632, 10%); */
+			background: #00ffff;
+			width: 100vw;
+			height: 100vh;
+			left : 0;
+			/* right : 0; */
+			top : 0;
+			z-index: 301;
+			opacity: 0.8;
+		}
+		#first_back {
+			/* display: none; */
+			position: fixed;/*fixed*/
+			/* background: lighten(#0F1632, 10%); */
+			/* background: black; */
+			/* width: 100vw; */
+			/* height: 100vh; */
+			left : 0;
+			/* right : 0; */
+			top : 0;
+			/* z-index: 301; */
+			padding: 15px 30px;
+			/* background: black; */
+			/* background : #0F1632; */
+
+			/* opacity: 0.8; */
+		}
+		#first_back h1 {
+			font-family: 'Times New Roman', Times, serif;
+			font-size: 72px;
+			font-weight: 600;
+			color : gray;
+			stroke: 2px white;
+			
+			-webkit-text-stroke: 2px white; /* for Safari/Chrome */
+  			/*text-stroke: 2px white;  for other browsers */
+  			color: black;
+		}
+		#first_back p {
+			font-family: 'Times New Roman', Times, serif;
+			font-size: 36px;
+			font-weight: 600;
+			color : white;
+			padding-left : 0px;
+		}
+		.img-slider {
+			cursor: pointer;
+		}
+		
+    </style>
+</head>
+<body>
+	
+	<div id="domElement"></div>
+	<div id="flash-start">
+		<div class="loader_first" id="first_back">
+			<h1 class="loader_element">LOBIN NORGUER</h1>
+			<p>
+				INTERACTIVE DESINER
+			</p>
+		</div>
+	</div>
+	
+	<div id="id-left-part" class="main-part loader1">
+		
+		<div class="menu-top-main">
+			<a id="go2home" href="#">ROBIN NOGUIER</a>
+			<a href="#" >ABOUT</a>
+		</div>
+		<h1 class="loader_element">Bublehouse</h1>
+		<p>
+			Bubblehouse aspires to be the best platform for creators
+			 to share their NFTs with the world.
+		</p>
+		<a class="button" href="#">OPEN CASE STUDY</a>
+		<div id="video-link" class="video-link">
+			<video width="200" height="160"  autoplay>
+				<source src="./videos/video - 2.mp4" type="video/mp4">
+				<!-- <source src="video.webm" type="video/webm"> -->
+				<!-- <source src="video.ogv" type="video/ogg"> -->
+			</video>
+		</div>
+	</div>
+	<div id = "detail-scene">
+		<div class="menu-top">
+			<a id="back2main" href="#">BACK HOME</a>
+			<a href="#" >ABOUT</a>
+		</div>
+
+		<div class="image">
+			<img class="img-hover" id="selected_image" src="img/image-2.jpg" class="img" alt="">
+		</div>
+		<div class="name-text">Ueno</div>
+		<a class="down" href="#">D</a>
+	</div>
+	<div id="flash-container">
+		<div id="flash-image"></div>
+		<div id="flash-detail"></div>
+	</div>
+	<div id="first-scene">
+		<section data-page="other" id="other">
+			<h1>The Page Other</h1>
+			<p>Some content on the other page.</p>
+			<p><a href="#home" data-role="page">GO TO HOME</a></p>
+			<div class="container">
+				<div class="image">
+				  <!-- <img src="img/image-0.jpg" class="img" alt=""> -->
+				</div>
+			  </div>
+		</section>
+		<section data-page="home" id="home">
+			<h1>Home</h1>
+			<p>Some content on the other page.</p>
+			<p><a href="#other" data-role="page">GO TO OTHER</a></p>
+			<div class="container">
+				<div class="image">
+				  <!-- <img src="img/image-1.jpg" class="img" alt=""> -->
+				</div>
+			  </div>
+		</section>
+
+		<ul id="list_nav" class="nav">
+			<li data-nav="0" data-role="link" src="img/image-0.jpg" data-clr="#f31e56">FUN
+				<span class="right_span"></span>
+				<!-- <img  src="img/image-0.jpg" width="0"> -->
+
+			</li>
+			<li data-nav="1" data-role="link" src="img/image-1.jpg" data-clr="#d56ac9">ESPANOTO
+				<!-- <img  src="img/image-1.jpg" width="0"> -->
+				<span class="right_span"></span>
+
+			</li>
+			<li data-nav="2" data-role="link" src="img/image-2.jpg" data-clr="#744e85">BUBBLEHOUSE
+				<!-- <img  src="img/image-2.jpg" width="0"> -->
+				<span class="right_span"></span>
+
+			</li>
+			<li data-nav="3" data-role="link" src="img/image-3.jpg" data-clr="#54d3b6">UENO
+				<!-- <img  src="img/image-3.jpg" width="0"> -->
+				<span class="right_span"></span>
+
+			</li>
+			<li data-nav="4" data-role="link" src="img/image-4.jpg" data-clr="#1b720f">GOOGLE
+				<!-- <img  src="img/image-4.jpg" width="0"> -->
+				<span class="right_span"></span>
+
+			</li>
+			<li data-nav="5" data-role="link" src="img/image-5.jpg" data-clr="#0d1f9c">IV-SKAYA
+				<!-- <img  src="img/image-4.jpg" width="0"> -->
+				<span class="right_span"></span>
+			</li>
+			<li data-nav="6" data-role="link" src="img/image-6.jpg" data-clr="#7e93ac">EAGLE FILM
+				<!-- <img  src="img/image-4.jpg" width="0"> -->
+				<span class="right_span"></span>
+			</li>
+		</ul>
+		<div id="wrap">
+			<!-- <a href="#other"> -->
+			<div class="n n0">
+				<img class="img-slider" src="img/image-0.jpg" width="128">
+			</div>
+			<!-- </a> -->
+			<div class="n n1">
+				<img  class="img-slider"  src="img/image-1.jpg" width="128">
+			</div>
+			<div class="n n2">
+				<img class="img-slider"  src="img/image-2.jpg" width="128">
+			</div>
+			<div class="n n3">
+				<img  class="img-slider"  src="img/image-3.jpg" width="128">
+			</div>
+			<div class="n n4">
+				<img  class="img-slider"  src="img/image-4.jpg" width="128">
+			</div>
+			<div class="n n4">
+				<img  class="img-slider"  src="img/image-5.jpg" width="128">
+			</div>
+			<div class="n n4">
+				<img  class="img-slider"  src="img/image-6.jpg" width="128">
+			</div>
+		</div>
+		<!-- <a href="other.html"><button>Click</button></a> -->
+		<!-- <div id="block"></div> -->
+		<div id="container"></div>
+	</div>
+	
+	<!-- <script src="../src/app.js"></script> -->
+	<script src="./js/three.bundle.js"></script>
+	<script src="./js/vendor/gsap.min.js"></script>
+	<script src="./js/wrap.js"></script> 
+	<script src="./js/loader.js"></script> 
+	<script src="./js/page-anim.js"></script> 
+	
+	<script >
+		var element = document.querySelector('body');
+		// element.classList.remove('image');
+		setTimeout(function(){
+			element.classList.add('body-transition');
+		}, 10);
+
+	</script>
+</body>
+</html>

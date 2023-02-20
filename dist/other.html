@@ -1,0 +1,100 @@
+<head>
+    <meta charset="UTF-8">
+    <title>Page Animations</title>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="css/imagetrans.css" /> 
+	  <link rel="stylesheet" href="/dist/css/switch.scss">
+
+    <style>
+       body {
+            /* overflow: hidden; */
+			      /* background-color: #FFF194; */
+            /* background-color : paleturquoise; */
+            /* background-color : paleturquoise; */
+            background: linear-gradient(to right, #FFF194, paleturquoise, paleturquoise);
+
+            /* width : 20%; */
+
+            /* transition: background-color 0.5s ease-in; */
+            transition: background 2.5s ease;
+            transition: width 1.5s ease-in;
+            
+           
+        }
+        body.transition {
+          width: 100%;
+          /* background-color: #FFF194; */
+          background: linear-gradient(to right, #FFF194, #FFF194, #FFF194);
+
+          /* transform: rotateX(0deg) rotateZ(0deg) translate3d(0px, 0px,0px);
+          box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.0);
+
+          transition: all 1.4s;
+          transform-style: preserve-3d; */
+        }
+        div.menu-top {
+          margin : 30px 30px;
+          display: flex;
+          justify-content: space-between;
+        }
+        .menu-top a {
+          text-decoration: none;
+          font-family: Arial, Helvetica, sans-serif;
+          color : black;
+          font-weight: 600;
+        }
+        a.down {
+          display: block;
+          width: 50px;
+          height: 50px;
+          border-radius: 50px;
+          background-color: #1d1d1d;
+          color : yellow;
+          text-align: center;
+          line-height: 50px;
+          text-decoration: none;
+          margin : 50px auto;
+        }
+        div.name-text {
+          margin: 50px;
+          font-family: 'Times New Roman', Times, serif;
+          font-size: 100px;
+          padding : 200px 50px
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+      <div class="menu-top">
+        <a href="index.html">BACK HOME</a>
+        <a href="#" >ABOUT</a>
+      </div>
+
+      <div class="image">
+        <img class="img-hover" id="selected_image" src="http://pixelcurse.com/wp-content/uploads/2011/02/minimalist_landscape_8.jpg" class="img" alt="">
+      </div>
+      <div class="name-text">Ueno</div>
+      <a class="down" href="#">Down</a>
+    </div>
+   
+  <script src="./js/three.bundle.js"></script>
+  <script src="./js/gsap.min.js"></script>
+  <!-- <script src="js/switch.js"></script>  -->
+
+ <script>
+  //  alert(sessionStorage.getItem('image_path'));
+    // const value = sessionStorage.getItem('key');
+    
+    const myImage = document.getElementById("selected_image");
+    myImage.src = sessionStorage.getItem('image_path');
+
+    var element = document.querySelector('.image');
+    var element_body = document.querySelector('body');
+    // element.classList.remove('image');
+    setTimeout(function(){
+      element.classList.add('image_hover');
+      element_body.classList.add('transition');
+
+    }, 300);
+ </script>
+</body>
